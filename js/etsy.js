@@ -46,14 +46,20 @@
             return "?api_key=" + this.token;
         },
 
-        getData: function(keywords) {
+        getData: function(keywords, listing_id) {
             if (keywords) {
                 keywords = "&keywords=" + keywords;
             } else {
                 keywords = "";
             }
+            if (listing_id) {
+                listing_id = "/" + listing_id + ".js";
+            } else {
+                listing_id = "/active.js";
+            }
+
             var etsydata = $.getJSON(
-                "https://openapi.etsy.com/v2/listings/active.js?includes=Images" + keywords + "&api_key=ljn6cl37cqrlmiy8hbnq63ww&callback=?"
+                "https://openapi.etsy.com/v2/listings"+ listing_id + "?includes=Images" + keywords + "&api_key=ljn6cl37cqrlmiy8hbnq63ww&callback=?"
             ).then(function(jsonp) {
                 return jsonp;
             });
@@ -62,12 +68,12 @@
         },
         drawDetails: function(listing_id){
             $.when(
-                this.getData(listing_id),
+                this.getData("", listing_id),
                 this.loadTemplate("detailed")
-                ).then(function(apidata, template){
-                    var templatingFun = _.template(template);
-                    document.querySelector(".container").innerHTML = templatingFun(apidata);
-                });
+            ).then(function(apidata, template){
+                var templatingFun = _.template(template);
+                document.querySelector(".container").innerHTML = templatingFun(apidata.results[0]);
+            });
         },
         
         loadTemplate: function(name) {

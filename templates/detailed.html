@@ -1,10 +1,9 @@
 <Div class="detail">
-	<h6><% results.title %></h6>
-	
-	<% if(results.Images instanceof Array){ %>
-	<img src="<%= results.Images[0].url_570xN %>">
+	<h6><%= title %></h6>
+	<% if(typeof Images === "object" && Images instanceof Array){ %>
+		<img class="Detimg" src="<%= Images[0].url_570xN %>">
 	<% } %>
-	<%= results.Description %>
+	<p><%= description %><P>
 </Div>
 
 
