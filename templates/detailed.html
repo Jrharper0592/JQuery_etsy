@@ -1,0 +1,10 @@
+<Div class="detail">
+	<h6><% results.title %></h6>
+	
+	<% if(results.Images instanceof Array){ %>
+	<img src="<%= results.Images[0].url_570xN %>">
+	<% } %>
+	<%= results.Description %>
+</Div>
+
+

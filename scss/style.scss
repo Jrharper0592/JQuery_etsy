@@ -49,3 +49,34 @@ img {max-width:100%;}
 body {
     transition: opacity .25s ease;
 }
+
+
+
+.nav_header{
+    height: 100px;
+    background-color: red;
+}
+    .search_bar {
+        position: relative;
+        height:20px;
+        float: right;
+    }
+    .etsy_logo {
+        height:100%;
+    }
+
+
+.etsy {
+    float: left;
+    height:100%;
+}
+
+
+.container {
+    background-color: blue;
+    margin: 5%;
+}
+
+.listings {
+   
+}
